@@ -18,7 +18,7 @@ ALTER TABLE student DROP COLUMN gpa;
 
 INSERT INTO student(name, major) VALUES ('Jack', 'Biology');
 INSERT INTO student(name, major) VALUES ('Kate', 'Sociology');
-INSERT INTO student(name) VALUES ('Claire');
+INSERT INTO student(name, major) VALUES ('Claire', 'Chemistry');
 INSERT INTO student(name, major) VALUES ('Jack', 'Biology');
 INSERT INTO student(name, major) VALUES ('Mike', 'Computer Science');
 SELECT * FROM student;
@@ -27,3 +27,6 @@ UPDATE student SET major = 'Bio' WHERE major = 'Biology';
 UPDATE student SET major = 'comp sci' WHERE major = 'Computer Science';
 
 DELETE FROM student WHERE student_id = 1;
+
+SELECT * FROM student ORDER BY student.student_id DESC;
+SELECT * FROM student ORDER BY student.major, student_id;
