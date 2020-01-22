@@ -8,7 +8,6 @@ CREATE TABLE student (
     major VARCHAR(20),
     PRIMARY KEY(student_id)
 );
-
 DESCRIBE student;
 
 DROP TABLE student;
@@ -34,4 +33,26 @@ SELECT * FROM student ORDER BY student.student_id DESC LIMIT 2;
 SELECT * FROM student WHERE student.major = 'Biology';
 SELECT name, major FROM student WHERE major = 'Biology' OR major = 'Chemistry';
 SELECT * FROM student WHERE major <> 'Chemistry';
-SELECT * FROM student WHERE name IN ('Claire', 'Kate', 'Mike');
+SELECT * FROM student WHERE major IN ('Biology', 'Chemistry');
+
+
+
+
+
+CREATE TABLE animal(
+	animal_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(15) NOT NULL,
+    type VARCHAR(15) NOT NULL
+);
+DESCRIBE animal;
+
+INSERT INTO animal(name, type) VALUES('George', 'Dog');
+INSERT INTO animal(name, type) VALUES('Sully', 'Cat');
+INSERT INTO animal(name, type) VALUES('Pop', 'Parrot');
+INSERT INTO animal(name, type) VALUES('Harry', 'Hedgehog');
+INSERT INTO animal(name, type) VALUES('Jim', 'Lizard');
+
+SELECT * FROM animal;
+
+SELECT animal.animal_id, animal.type FROM animal WHERE animal.animal_id >= 2 ORDER BY animal.animal_id DESC;
+SELECT * FROM animal WHERE animal.type IN('Lizard', 'Hedgehog');
