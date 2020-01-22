@@ -30,3 +30,8 @@ DELETE FROM student WHERE student_id = 1;
 
 SELECT * FROM student ORDER BY student.student_id DESC;
 SELECT * FROM student ORDER BY student.major, student_id;
+SELECT * FROM student ORDER BY student.student_id DESC LIMIT 2;
+SELECT * FROM student WHERE student.major = 'Biology';
+SELECT name, major FROM student WHERE major = 'Biology' OR major = 'Chemistry';
+SELECT * FROM student WHERE major <> 'Chemistry';
+SELECT * FROM student WHERE name IN ('Claire', 'Kate', 'Mike');
