@@ -12,3 +12,10 @@ CREATE TABLE employee (
     super_id INT,
     branch_id INT
 );
+
+CREATE TABLE branch (
+	branch_id INT AUTO_INCREMENT PRIMARY KEY,
+    branch_name VARCHAR(15),
+    mgr_id INT,
+    mgr_start_date DATE
+);
