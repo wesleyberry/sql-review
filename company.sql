@@ -12,10 +12,14 @@ CREATE TABLE employee (
     super_id INT,
     branch_id INT
 );
-
+DESCRIBE employee;
 CREATE TABLE branch (
-	branch_id INT AUTO_INCREMENT PRIMARY KEY,
+	branch_id INT PRIMARY KEY,
     branch_name VARCHAR(15),
     mgr_id INT,
-    mgr_start_date DATE
+    mgr_start_date DATE,
+    FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
 );
+DESCRIBE branch;
+ALTER TABLE employee ADD FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE SET NULL;
+ALTER TABLE employee ADD FOREIGN KEY(super_id) REFERENCES employee(emp_id) ON DELETE SET NULL;
