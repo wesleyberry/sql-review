@@ -6,7 +6,7 @@ CREATE TABLE employee (
 	emp_id INT PRIMARY KEY,
     first_name VARCHAR(40),
     last_name VARCHAR(40),
-    birth_dat DATE,
+    birth_date DATE,
     sex VARCHAR(1),
     salary INT,
     super_id INT,
@@ -56,7 +56,7 @@ INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');
 UPDATE employee SET branch_id = 1 WHERE emp_id = 100;
 INSERT INTO employee VALUES(101, 'Jan', 'Levinson', '1961-05-11', 'F', 110000, 100, 1);
 
-INSERT INTO employee VALUES(106, 'Josh', 'Porter', '1969-09-05', 'M', 7800, 100, NULL);
+INSERT INTO employee VALUES(106, 'Josh', 'Porter', '1969-09-05', 'M', 78000, 100, NULL);
 INSERT INTO branch VALUES(3, 'Stamford', 106, '1998-02-13');
 UPDATE employee SET branch_id = 3 WHERE emp_id = 106;
 INSERT INTO employee VALUES(102, 'Michael', 'Scott', '1964-03-15', 'M', 75000, 100, NULL);
@@ -97,6 +97,7 @@ INSERT INTO works_with VALUES(107, 405, 26000);
 INSERT INTO works_with VALUES(102, 406, 15000);
 INSERT INTO works_with VALUES(105, 406, 130000);
 
+-- Query
 SELECT * FROM employee;
 SELECT * FROM client;
 SELECT * FROM employee ORDER BY employee.salary DESC;
@@ -105,3 +106,26 @@ SELECT * FROM employee LIMIT 5;
 SELECT employee.first_name, employee.last_name FROM employee;
 SELECT employee.first_name AS forename, employee.last_name AS surname FROM employee;
 SELECT DISTINCT employee.sex FROM employee;
+
+SELECT COUNT(employee.emp_id) AS num_emp FROM employee;
+SELECT COUNT(employee.super_id) FROM employee;
+SELECT COUNT(emp_id) FROM employee WHERE sex = 'F' AND birth_date > '1971-01-01';
+SELECT AVG(salary) FROM employee WHERE sex = 'M';
+SELECT SUM(salary) FROM employee;
+SELECT COUNT(sex), sex FROM employee GROUP BY sex;
+SELECT SUM(total_sales), client_id FROM works_with GROUP BY client_id;
+SELECT * FROM client WHERE client_name LIKE '%LLC';
+
+SELECT * FROM branch_supplier WHERE supplier_name LIKE '%lable%';
+SELECT * FROM employee WHERE birth_date LIKE '____-02%';
+SELECT * FROM client WHERE client_name LIKE '%school%';
+
+-- Union 
+SELECT employee.first_name 
+FROM employee 
+UNION 
+SELECT branch.branch_name 
+FROM branch;
+
+
+
