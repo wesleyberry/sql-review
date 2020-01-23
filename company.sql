@@ -131,6 +131,7 @@ SELECT client_name FROM client UNION SELECT supplier_name FROM branch_supplier;
 SELECT SUM(salary) FROM employee UNION SELECT SUM(total_sales) FROM works_with;
 INSERT INTO branch VALUES(4, 'Buffalo', NULL, NULL);
 
+-- Joins
 SELECT employee.emp_id, employee.first_name, branch.branch_name
 FROM employee
 JOIN branch
@@ -151,7 +152,23 @@ FROM employee
 JOIN works_with
 ON employee.emp_id = works_with.emp_id;
 
+-- Nested Queries
+SELECT employee.first_name, employee.last_name 
+FROM employee 
+WHERE employee.emp_id IN (
+	SELECT works_with.emp_id 
+    FROM works_with 
+    WHERE works_with.total_sales > 30000
+);
 
+SELECT client.client_name
+FROM client
+WHERE client.branch_id = (
+	SELECT branch.branch_id
+	FROM branch
+	WHERE branch.mgr_id = 102
+    LIMIT 1
+);
 
 
 
