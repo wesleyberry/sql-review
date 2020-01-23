@@ -170,7 +170,8 @@ WHERE client.branch_id = (
     LIMIT 1
 );
 
-
+DELETE FROM employee WHERE emp_id = 102;
+SELECT * FROM branch;
 
 
 
