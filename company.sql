@@ -170,11 +170,18 @@ WHERE client.branch_id = (
     LIMIT 1
 );
 
+-- on delete set null
 DELETE FROM employee WHERE emp_id = 102;
 SELECT * FROM branch;
 
+-- on delete cascade
 DELETE FROM branch_supplier WHERE branch_id = 2;
 SELECT * FROM branch_supplier;
+
+-- Triggers
+CREATE TABLE trigger_test(
+	message VARCHAR(100)
+);
 
 
 
